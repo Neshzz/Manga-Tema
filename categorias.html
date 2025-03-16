@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorias - NextSakura</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/global/styles.css">
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+    <link rel="stylesheet" href="css/pages/categorias.css">
+    <script type="module" src="js/header/header.js"></script>
+</head>
+<body>
+    <div id="header"></div>
+    <main class="container">
+        <div class="categories-grid">
+            <!-- Exemplo de categorias -->
+            <div class="category-card">
+                <i class="fas fa-fist-raised"></i>
+                <h3>Ação</h3>
+                <span>324 títulos</span>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-heart"></i>
+                <h3>Romance</h3>
+                <span>156 títulos</span>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-ghost"></i>
+                <h3>Terror</h3>
+                <span>89 títulos</span>
+            </div>
+            <!-- Mais categorias... -->
+        </div>
+
+        <div class="manga-grid">
+            <!-- Mangás da categoria selecionada aparecerão aqui -->
+        </div>
+
+        <div class="pagination">
+            <button id="prev-page">Anterior</button>
+            <span id="current-page">1</span>
+            <button id="next-page">Próximo</button>
+        </div>
+    </main>
+
+    <div id="feedback-message" class="feedback-message"></div>
+
+    <div id="footer-placeholder"></div>
+    <script src="js/header/footer.js"></script>
+    <script type="module" src="js/pages/categorias.js"></script>
+</body>
+</html>

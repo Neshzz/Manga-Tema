@@ -1,0 +1,270 @@
+/* =========================== */
+/*     Variáveis Globais      */
+/* =========================== */
+:root {
+  --card-transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  --overlay-gradient: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  --card-hover-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================== */
+/*          Animações         */
+/* =========================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to { background-position: 200% 0; }
+}
+
+/* =========================== */
+/*       Grid e Layout        */
+/* =========================== */
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2.5rem;
+  width: min(100%, 1400px);
+  padding: 1.5rem;
+  margin: 0 auto;
+  contain: content;
+  will-change: transform;
+}
+
+/* =========================== */
+/*           Cards            */
+/* =========================== */
+.chapter-card {
+  position: relative;
+  background: var(--bg-secondary);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  height: 400px;
+  box-shadow: var(--card-shadow);
+  transition: transform var(--card-transition),
+              box-shadow var(--card-transition),
+              border-color var(--card-transition);
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--accent-variant);
+  animation: fadeIn 0.5s ease forwards;
+  opacity: 0;
+  will-change: transform, opacity;
+  isolation: isolate;
+}
+
+.chapter-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--card-hover-shadow);
+  border-color: var(--accent-color);
+}
+
+/* =========================== */
+/*      Imagem do Card        */
+/* =========================== */
+.chapter-card-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-secondary);
+}
+
+.chapter-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--card-transition);
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.chapter-card:hover .chapter-card-image img {
+  transform: scale(1.08);
+}
+
+/* =========================== */
+/*           Overlay          */
+/* =========================== */
+.chapter-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--overlay-gradient);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 2;
+}
+
+.chapter-card:hover .chapter-overlay {
+  opacity: 1;
+}
+
+.chapter-overlay-text {
+  color: white;
+  text-align: center;
+  transform: translateY(20px);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+
+.chapter-card:hover .chapter-overlay-text {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* =========================== */
+/*      Badges e Status       */
+/* =========================== */
+.chapter-badge,
+.chapter-status {
+  position: absolute;
+  padding: 0.6rem 1.2rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  z-index: 3;
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chapter-badge {
+  top: 1rem;
+  right: 1rem;
+  background: var(--accent-color);
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.chapter-status {
+  top: 1rem;
+  left: 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.chapter-card:hover .chapter-badge,
+.chapter-card:hover .chapter-status {
+  transform: translateY(-2px);
+}
+
+/* =========================== */
+/*          Botões            */
+/* =========================== */
+.chapter-overlay-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--accent-color);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.chapter-card:hover .chapter-overlay-button {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.chapter-overlay-button:hover {
+  background: var(--accent-variant);
+  transform: translateY(-3px);
+}
+
+/* =========================== */
+/*      Loading States        */
+/* =========================== */
+.loading-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-secondary) 0%,
+    var(--bg-primary) 50%,
+    var(--bg-secondary) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* =========================== */
+/*      Responsividade        */
+/* =========================== */
+@media (max-width: 1200px) {
+  .chapter-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .chapter-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+  
+  .chapter-card {
+    height: 350px;
+  }
+  
+  .chapter-badge,
+  .chapter-status {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .chapter-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+  
+  .chapter-card {
+    height: 300px;
+  }
+  
+  .chapter-overlay {
+    padding: 1rem;
+  }
+}
+
+/* Suporte à redução de movimento */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .chapter-card:hover {
+    transform: none;
+  }
+}

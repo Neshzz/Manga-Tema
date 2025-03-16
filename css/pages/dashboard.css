@@ -1,0 +1,105 @@
+@import "../global/styles.css";
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 95%;
+}
+
+/* Melhorando a hierarquia tipográfica */
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* Melhorando os cards */
+#reading-list, 
+#recent-chapters, 
+#admin-dashboard {
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#reading-list:hover, 
+#recent-chapters:hover, 
+#admin-dashboard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Melhorando a navegação */
+nav {
+    padding: 15px 0;
+}
+
+nav a {
+    margin: 0 20px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--accent-color);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Adicionando responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+    
+    nav a {
+        margin: 0 10px;
+    }
+}

@@ -1,0 +1,356 @@
+.ranking-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+  
+  .ranking-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    font-weight: 600;
+  }
+  
+  .ranking-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+  
+.ranking-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 2fr)); /* Ajuste aqui se necessário */
+  gap: 2.5rem; /* Ajuste o espaço entre os cards */
+  padding: 20px;
+  margin: 0 auto;
+}
+  
+.ranking-card {
+    position: relative;
+    background: var(--bg-secondary);
+    border-radius: 1.25rem;
+    border: solid var(--accent-color) 1px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+    background: var(--bg-secondary);
+    -webkit-box-shadow: 0 8px 12px rgba(255, 0, 179, 0.2);
+    box-shadow: 0 8px 12px rgba(255, 0, 179, 0.2);
+    
+    /* Novo estilo para a borda animada */
+    isolation: isolate;
+}
+
+.ranking-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        transparent, 
+        transparent, 
+        transparent, 
+        var(--accent-color)
+    );
+    animation: rotate 4s linear infinite;
+    z-index: -1;
+}
+
+.ranking-card::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    background: var(--bg-secondary);
+    border-radius: 1rem;
+    z-index: -1;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.ranking-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+}
+
+.ranking-card-content {
+    position: relative;
+    z-index: 10;
+    background: var(--bg-secondary);
+    border-radius: 1.25rem;
+    overflow: hidden;
+}
+
+/* Ajuste para manter a aparência original */
+.ranking-image-container,
+.ranking-card-info {
+    position: relative;
+    z-index: 2;
+}
+  
+.ranking-position {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: transparent;
+  color: white;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.25rem;
+  z-index: 2;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid white;
+  transition: all 0.3s ease;
+}
+  
+  .ranking-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  .ranking-card:hover .ranking-position {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .ranking-image-container {
+    position: relative;
+    aspect-ratio: 2/3;
+    overflow: hidden;
+  }
+  
+  .ranking-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  
+  .ranking-card:hover img {
+    transform: scale(1.05);
+  }
+  
+  .ranking-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0.4) 50%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
+    display: flex;
+    flex-direction: column;
+ justify-content: flex-end;
+    padding: 1.5rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.ranking-card:hover .ranking-overlay {
+    opacity: 1;
+}
+
+.ranking-stats {
+    display: flex;
+    gap: 1rem;
+    color: white;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.ranking-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ranking-card-info {
+    padding: 1.5rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.ranking-title-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.ranking-genre {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.ranking-score {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.ranking-score-value {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animação em cascata para os cards */
+.ranking-card:nth-child(2) { animation-delay: 0.1s; }
+.ranking-card:nth-child(3) { animation-delay: 0.2s; }
+.ranking-card:nth-child(4) { animation-delay: 0.3s; }
+.ranking-card:nth-child(5) { animation-delay: 0.4s; }
+
+/* Responsividade */
+@media (max-width: 1000px) {
+    .ranking-container {
+        padding: 2rem 1.5rem;
+    }
+    
+    .ranking-grid {
+        gap: 2rem;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .ranking-container {
+        padding: 1.5rem 1rem;
+    }
+    
+    .ranking-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .ranking-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .ranking-card-info {
+        padding: 1rem;
+    }
+    
+    .ranking-title-text {
+        font-size: 1.1rem;
+    }
+    
+    .ranking-position {
+        width: 2rem;
+        height: 2rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .ranking-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+    
+    .ranking-card-info {
+        padding: 0.75rem;
+    }
+    
+    .ranking-title-text {
+        font-size: 1rem;
+    }
+}
+
+/* Suporte para preferências de redução de movimento */
+@media (prefers-reduced-motion: reduce) {
+    .ranking-card,
+    .ranking-card img,
+    .ranking-position {
+        transition: none;
+        animation: none;
+    }
+    
+    .ranking-card:hover {
+        transform: none;
+    }
+}
+
+.ranking-filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #eee;
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#ranking-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.loading-message {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+.feedback-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 5px;
+    color: white;
+    z-index: 1000;
+    display: none;
+}

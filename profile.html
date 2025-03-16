@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - NextScan</title>
+    <link rel="stylesheet" href="/css/global/styles.css">
+    <link rel="stylesheet" href="/css/global/header.css">
+    <link rel="stylesheet" href="/css/pages/profile.css">
+</head>
+<body>
+    <div id="header"></div>
+
+    <main class="profile-container">
+        <div class="profile-header">
+            <div class="profile-info">
+                <h1 id="username"></h1>
+                <p id="email"></p>
+                <p id="member-since"></p>
+            </div>
+            <button id="edit-profile-btn" class="edit-btn">Editar Perfil</button>
+        </div>
+
+        <div class="profile-content">
+            <div class="profile-section">
+                <h2>Favoritos</h2>
+                <div id="favorites-grid" class="manga-grid">
+                    <!-- Favoritos serão carregados via JavaScript -->
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <h2>Histórico de Leitura</h2>
+                <div id="history-list" class="history-list">
+                    <!-- Histórico será carregado via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de Edição -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <h2>Editar Perfil</h2>
+            <form id="edit-form">
+                <div class="form-group">
+                    <label for="edit-username">Nome de usuário</label>
+                    <input type="text" id="edit-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-email">Email</label>
+                    <input type="email" id="edit-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-password">Nova Senha (opcional)</label>
+                    <input type="password" id="edit-password">
+                </div>
+                <div class="form-group">
+                    <label for="edit-confirm-password">Confirmar Nova Senha</label>
+                    <input type="password" id="edit-confirm-password">
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit">Salvar</button>
+                    <button type="button" id="cancel-edit">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="feedback-message" class="feedback-message"></div>
+
+    <script src="/js/pages/profile.js"></script>
+</body>
+</html> 

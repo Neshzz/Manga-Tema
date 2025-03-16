@@ -1,0 +1,110 @@
+:root {
+    --bg-primary: #121212;
+    --bg-secondary: #1E1E1E;
+    --text-primary: #E0E0E0;
+    --text-secondary: #A0A0A0;
+    --accent-color: #BB86FC;
+    --accent-variant: #3700B3;
+    --success-color: #4CAF50;
+    --error-color: #F44336;
+    --warning-color: #FF9800;
+    --card-bg: #252525;
+    --card-hover: #2d2d2d;
+    --card-border: #333333;
+    --gradient-overlay: linear-gradient(180deg, rgba(18, 18, 18, 0) 0%, rgba(18, 18, 18, 0.9) 90%);
+}
+
+.carousel-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.carousel {
+    display: flex;
+    transform: translateX(0);
+    will-change: transform;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-card {
+    min-width: 230px;
+    max-height: 300px;
+    margin: 10px;
+    padding: 0;
+    border-radius: 12px;
+    border: 2px solid var(--accent-variant);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    background: var(--bg-secondary);
+    transition: all 0.3s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    border-color: var(--accent-color);
+}
+
+.carousel-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    transition: transform 0.3s ease;
+}
+
+.carousel-card:hover img {
+    transform: scale(1.05);
+}
+
+.carousel-title {
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(30, 30, 30, 0.95), rgba(30, 30, 30, 0.8));
+    padding: 12px;
+    color: var(--text-primary);
+    font-weight: bold;
+    text-align: center;
+    transition: bottom 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.carousel-card:hover .carousel-title {
+    bottom: 0;
+}
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: 2px solid var(--accent-color);
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.nav-button:hover {
+    background: rgba(187, 134, 252, 0.2);
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}

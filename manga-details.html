@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Obra - NextSakura</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/global/styles.css">
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/comments.css">
+    <link rel="stylesheet" href="css/pages/manga-details.css">
+    <script type="module" src="js/header/header.js"></script>
+</head>
+<body>
+    <div id="header"></div>
+    <div class="container">
+        <div class="manga-details-grid">
+            <div class="manga-cover">
+                <img id="manga-cover" src="/backend/public/assets/images/Cover/Demonio Imperador.jpg" alt="Capa do Mangá">
+            </div>
+
+            <div class="manga-info">
+                <h1 id="manga-title" class="manga-title">Demônio Imperador</h1>
+                <div class="rating-section">
+                    <h3>Avalie a Obra</h3>
+                    <div id="rating-stars" class="rating-stars" aria-label="Avaliação em estrelas">
+                        <span class="star" data-value="1" role="button" tabindex="0">★</span>
+                        <span class="star" data-value="2" role="button" tabindex="0">★</span>
+                        <span class="star" data-value="3" role="button" tabindex="0">★</span>
+                        <span class="star" data-value="4" role="button" tabindex="0">★</span>
+                        <span class="star" data-value="5" role="button" tabindex="0">★</span>
+                    </div>
+                    <div id="rating-count" class="rating-count">
+                        Avaliações: <span id="rating-total">0</span>
+                    </div>
+                </div>
+                <div class="manga-meta">
+                    <div class="meta-item">
+                        <strong>Autor:</strong>
+                        <span id="manga-author">17K</span>
+                    </div>
+                    <div class="meta-item">
+                        <strong>Gênero:</strong>
+                        <span id="manga-genre">Ação, Aventura, Fantasia, Harém</span>
+                    </div>
+                    <div class="meta-item">
+                        <strong>Status:</strong>
+                        <span id="manga-status">Lançando</span>
+                    </div>
+                    <div class="meta-item">
+                        <strong>Visualizações:</strong>
+                        <span id="manga-views">1.76M</span>
+                    </div>
+                </div>
+                <div class="manga-synopsis">
+                    <h3>Sinopse:</h3>
+                    <p id="manga-synopsis">Eu era apenas um estudante normal que acabou reencarnando como um Imperador Demônio, tendo que se reproduzir com todos os tipos de garotos monstros para reviver o prestígio do seu clã! A Graça de uma fênix, a panda fofinha, a amável aranha… Tenho só que ir pegando todas e conquistar o mundo!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="chapters-section">
+            <h2>Capítulos</h2>
+            
+            <button onclick="openChaptersModal()" class="view-all-chapters">Ver Todos os Capítulos</button>
+        </div>
+
+        <div id="chapters-modal" class="chapters-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Todos os Capítulos</h2>
+                    <button onclick="closeChaptersModal()" class="close-button">&times;</button>
+                </div>
+                <div id="chapters-list-full" class="chapters-list-full">
+                    <div class="chapter-item">
+                        <a href="read.html?id=1">Capítulo 1</a>
+                        <span class="chapter-date">2025-01-28</span>
+                    </div>
+                    <div class="chapter-item">
+                        <a href="read.html?id=2">Capítulo 2</a>
+                        <span class="chapter-date">2025-01-28</span>
+                    </div>
+                    <div class="chapter-item">
+                        <a href="read.html?id=3">Capítulo 3</a>
+                        <span class="chapter-date">2025-01-28</span>
+                    </div>
+                    <div class="chapter-item">
+                        <a href="read.html?id=4">Capítulo 4</a>
+                        <span class="chapter-date">2025-01-28</span>
+                    </div>
+                    <div class="chapter-item">
+                        <a href="read.html?id=5">Capítulo 5</a>
+                        <span class="chapter-date">2025-01-28</span>
+                    </div>
+                    <div class="chapter-item">
+                        <a href="read.html?id=6">Capítulo 6</a>
+                        <span class="chapter-date">2025-01-28</span>
+                    </div>
+                    <div class="chapter-item">
+                        <a href="read.html?id=7">Capítulo 7</a>
+                        <span class="chapter-date">2025-01-28</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="comments-section">
+            <h3>Comentários</h3>
+            <form id="comment-form" class="comment-form">
+                <textarea 
+                    id="comment-input" 
+                    placeholder="Deixe seu comentário..."
+                    required
+                    minlength="3"
+                    maxlength="500"
+                ></textarea>
+                <button type="submit">Enviar Comentário</button>
+            </form>
+            <div id="comments-container" class="comments-container">
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div id="manga-comments"></div>
+    <div id="footer-placeholder"></div>
+
+    <script src="js/header/footer.js"></script>
+    <script type="module" src="js/pages/manga-details.js"></script>
+    <script type="module" src="js/pages/comments.js"></script>
+    <script type="module" src="js/pages/rating.js"></script>
+    
+</body>
+</html>

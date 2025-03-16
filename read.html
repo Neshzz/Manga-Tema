@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitura - NextSakura</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/global/styles.css">
+    <link rel="stylesheet" href="css/components/header.css">
+    
+    <link rel="stylesheet" href="css/components/comments.css">
+    <link rel="stylesheet" href="css/pages/read.css">
+    <script type="module" src="js/header/header.js"></script>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <main class="container">
+        <!-- Informações do capítulo -->
+        <div class="chapter-info">
+            <h1 id="manga-title">Nome do Mangá</h1>
+            <h2 id="chapter-title">Capítulo X</h2>
+        </div>
+
+        <!-- Container das páginas -->
+        <div id="pages-container" class="pages-container">
+            <!-- Páginas serão carregadas via JavaScript -->
+             <img src="/uploads/Manga-001/Capítulo 01/01.webp" alt="Página 1">
+             <img src="/uploads/Manga-001/Capítulo 01/02.webp" alt="Página 2">
+             <img src="/uploads/Manga-001/Capítulo 01/03.webp" alt="Página 3">
+             <img src="/uploads/Manga-001/Capítulo 01/04.webp" alt="Página 4">
+             <img src="/uploads/Manga-001/Capítulo 01/05.webp" alt="Página 5">
+             <img src="/uploads/Manga-001/Capítulo 01/06.webp" alt="Página 6">
+             <img src="/uploads/Manga-001/Capítulo 01/07.webp" alt="Página 7">
+             <img src="/uploads/Manga-001/Capítulo 01/08.webp" alt="Página 8">
+             <img src="/uploads/Manga-001/Capítulo 01/09.webp" alt="Página 9">
+             <img src="/uploads/Manga-001/Capítulo 01/10.webp" alt="Página 10">
+             <img src="/uploads/Manga-001/Capítulo 01/11.webp" alt="Página 11">
+             <img src="/uploads/Manga-001/Capítulo 01/12.webp" alt="Página 12">
+             <img src="/uploads/Manga-001/Capítulo 01/13.webp" alt="Página 13">
+             <img src="/uploads/Manga-001/Capítulo 01/14.webp" alt="Página 14">
+             <img src="/uploads/Manga-001/Capítulo 01/15.webp" alt="Página 15">
+             <img src="/uploads/Manga-001/Capítulo 01/16.webp" alt="Página 16">
+             <img src="/uploads/Manga-001/Capítulo 01/17.webp" alt="Página 17">
+             <img src="/uploads/Manga-001/Capítulo 01/18.webp" alt="Página 18">
+             <img src="/uploads/Manga-001/Capítulo 01/19.webp" alt="Página 19">
+             <img src="/uploads/Manga-001/Capítulo 01/20.webp" alt="Página 20">
+
+        </div>
+
+        <!-- Navegação entre capítulos -->
+        <div class="chapter-navigation">
+            <button id="prev-chapter" class="nav-btn">
+                <i class="fas fa-chevron-left"></i> Capítulo Anterior
+            </button>
+            <button id="next-chapter" class="nav-btn">
+                Próximo Capítulo <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <!-- Seção de comentários -->
+        <div class="comments-toggle">
+            <button id="toggle-comments" class="toggle-comments-btn">
+                <i class="fas fa-comments"></i> Mostrar Comentários
+            </button>
+        </div>
+
+        <div id="chapter-comments" class="chapter-comments hidden">
+            <!-- Sistema de comentários será carregado aqui -->
+        </div>
+    </main>
+
+    <script type="module" src="js/pages/read.js"></script>
+</body>
+
+</html>

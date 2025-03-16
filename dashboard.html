@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Painel</title>
+    <link rel="stylesheet" href="/css/global/styles.css">
+    <link rel="stylesheet" href="/css/admin/admin.css">
+    <link rel="stylesheet" href="/css/pages/dashboard.css">
+</head>
+<body>
+    <div id="header"></div>
+    <script>
+        function goToHome() {
+            window.location.href = 'index.html';
+        }
+    </script>
+
+    <main class="container">
+        <section id="user-dashboard">
+            <h1 id="welcome-message">Bem-vindo</h1>
+            
+            <div id="admin-dashboard" style="display: none;">
+                <h2>Painel do Administrador</h2>
+                <div class="admin-actions">
+                    <div class="admin-card">
+                        <h3>Gerenciar Usuários</h3>
+                        <p>Visualize, edite e gerencie contas de usuários</p>
+                        <button class="admin-btn" onclick="goToUserManagement()">Acessar</button>
+                    </div>
+                    <div class="admin-card">
+                        <h3>Gerenciar Obras</h3>
+                        <p>Adicione, edite ou remova mangás do catálogo</p>
+                        <button class="admin-btn" onclick="goToMangaManagement()">Acessar</button>
+                    </div>
+                    <div class="admin-card">
+                        <h3>Relatórios</h3>
+                        <p>Visualize estatísticas e relatórios de uso</p>
+                        <button class="admin-btn" onclick="goToReports()">Acessar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="reader-dashboard" style="display: none;">
+                <h2>Painel do Leitor</h2>
+                <div id="reading-list">
+                    <h2>Lendo atualmente</h2>
+                    <!-- Lista de mangás em leitura será carregada dinamicamente -->
+                </div>
+
+                <div id="recent-chapters">
+                    <h2>Capítulos Recentes</h2>
+                    <!-- Capítulos recentes serão carregados dinamicamente -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/manga.js"></script>
+    <script src="js/header.js"></script>
+
+    <script>
+        // Verificar o papel do usuário
+        fetch('backend/check_user_role.php') // Um arquivo que retorna o papel do usuário
+            .then(response => response.json())
+            .then(data => {
+                if (data.role === 'admin') {
+                    document.getElementById('admin-dashboard').style.display = 'block';
+                } else if (data.role === 'reader') {
+                    document.getElementById('reader-dashboard').style.display = 'block';
+                } else {
+                    // Redirecionar ou mostrar mensagem de erro
+                    //window.location.href = 'login-modal.html'; // Redireciona para a página de login
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao verificar o papel do usuário:', error);
+                //window.location.href = 'login-modal.html'; // Redireciona para a página de login
+            });
+    </script>
+</body>
+</html>

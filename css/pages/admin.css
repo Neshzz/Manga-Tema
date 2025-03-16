@@ -1,0 +1,124 @@
+/* =============== VARIÁVEIS =============== */
+.admin-header {
+    --header-height: 80px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: var(--header-height);
+    background: rgba(var(--bg-secondary), 0.98);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--card-border);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    height: 100%;
+  }
+  
+  .header-brand .logo {
+    height: 40px;
+    width: auto;
+    transition: transform 0.3s var(--ease-out);
+  }
+  
+  .header-brand:hover .logo {
+    transform: scale(1.05);
+  }
+  
+  .admin-nav .nav-tabs {
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s var(--ease-out);
+  }
+  
+  .tab-btn.active {
+    background: rgba(var(--accent-color-rgb), 0.15);
+    color: var(--accent-color);
+  }
+  
+  .tab-btn:hover:not(.active) {
+    background: rgba(var(--accent-color-rgb), 0.05);
+  }
+  
+  .header-utils {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-left: auto;
+  }
+  
+  .search-wrapper {
+    position: relative;
+    width: 240px;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 0.75rem 2rem 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+    background: rgba(var(--bg-primary), 0.05);
+    color: var(--text-primary);
+    transition: all 0.3s var(--ease-out);
+  }
+  
+  .search-input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(var(--accent-color-rgb), 0.1);
+  }
+  
+  .search-wrapper i {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+  }
+  
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--card-border);
+    background: rgba(var(--bg-primary), 0.1);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s var(--ease-out);
+  }
+  
+  .theme-toggle:hover {
+    background: rgba(var(--accent-color-rgb), 0.1);
+    transform: rotate(15deg);
+  }
+  
+  /* Conteúdo Principal */
+  .admin-main {
+    margin-top: var(--header-height);
+    padding: 2rem;
+  }
+  
+  .management-panel {
+    display: none;
+    background: var(--bg-secondary

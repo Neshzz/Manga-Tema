@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<header>
+    <div class="header-container">
+        <div class="logo-container" onclick="goToHome('index.html')">
+            <img src="../assets/images/logo.gif" alt="Logo" class="header-logo">
+            <span>NextSakura</span>
+        </div>
+
+        <div class="navigation-menu">
+            <div class="nav-links">
+                <a href="../projetos.html" class="nav-link">
+                    <i class="fas fa-book"></i>
+                    <span>Projetos</span>
+                </a>
+                <a href="../categorias.html" class="nav-link">
+                    <i class="fas fa-tags"></i>
+                    <span>Categorias</span>
+                </a>
+                <a href="../ranking.html" class="nav-link">
+                    <i class="fas fa-trophy"></i>
+                    <span>Ranking</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="header-icons">
+            <div class="header-icon search-icon" onclick="toggleHeaderSearch()">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="header-icon settings-icon" onclick="toggleSettingsMenu()">
+                <i class="fas fa-cog"></i>
+            </div>
+        </div>
+
+        <div id="header-search-dropdown" class="search-dropdown">
+            <input type="text" id="header-search-input" class="search-input-header" placeholder="Buscar mangás...">
+            <div id="header-search-results"></div>
+        </div>
+
+        <div class="settings-dropdown" id="settingsDropdown">
+            <a href="../dashboard.html" id="user-profile">Meu Perfil</a>
+            <a href="#" id="login-trigger">Entrar</a>
+            <a href="#" id="register-trigger">Cadastrar</a>
+        </div>
+    </div>
+</header>
+<script src="../js/header.js"></script>
+<script>
+    function goToHome(url) {
+        window.location.href = url;
+    }
+</script>

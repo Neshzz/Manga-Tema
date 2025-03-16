@@ -1,0 +1,126 @@
+.categories-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .category-section {
+    margin-bottom: 2rem;
+  }
+  
+  .category-title {
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .manga-card {
+    background-color: var(--bg-secondary);
+    border-radius: 0.75rem;
+    box-shadow: 0 0.625rem 1rem rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    overflow: visible;
+    position: relative;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--accent-variant);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .manga-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 0.875rem 1.25rem rgba(0, 0, 0, 0.25);
+  }
+  
+  .manga-card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .read-now-button {
+    display: inline-block;
+    width: fit-content;
+    font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+    background-color: #4a1bb9;
+    color: whitesmoke;
+    padding: 0.625rem 1rem;
+    border-radius: 0.625rem;
+    text-decoration: none;
+    margin-top: auto;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+  
+  .read-now-button:hover {
+    background-color: var(--accent-variant);
+    transform: translateY(-2px);
+  }
+  
+  @media (max-width: 768px) {
+    .categories-container {
+      padding: 1rem;
+    }
+    
+    .category-grid {
+      gap: 1rem;
+    }
+    
+    .manga-card {
+      padding: 0.75rem;
+    }
+  }
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+#manga-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    gap: 15px;
+}
+
+#current-page {
+    padding: 5px 10px;
+}
+
+.loading-message {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    grid-column: 1 / -1;
+}
+
+.feedback-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 5px;
+    color: white;
+    z-index: 1000;
+    display: none;
+}

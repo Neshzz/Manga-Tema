@@ -1,0 +1,109 @@
+:root {
+    /* Cores base - Light Theme */
+    --bg-primary-light: #ffffff;
+    --bg-secondary-light: #f5f5f5;
+    --text-primary-light: #333333;
+    --text-secondary-light: #666666;
+    --accent-color-light: #b700ff;
+    --card-bg-light: #ffffff;
+    --border-color-light: rgba(183, 0, 255, 0.2);
+
+    /* Cores base - Dark Theme */
+    --bg-primary-dark: #0a0a0a;
+    --bg-secondary-dark: #1a1a1a;
+    --text-primary-dark: #ffffff;
+    --text-secondary-dark: #cccccc;
+    --accent-color-dark: #d020ff;
+    --card-bg-dark: #1a1a1a;
+    --border-color-dark: rgba(183, 0, 255, 0.3);
+
+    /* Variáveis Gerais */
+    --font-size-sm: 0.8rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.8rem;
+    --border-radius-sm: 6px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+
+    /* Novas variáveis baseadas no seu styles.css */
+    --accent-gradient: linear-gradient(135deg, var(--accent-color), rgba(183, 0, 255, 0.8));
+    --card-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    --glassmorphism: rgba(255, 255, 255, 0.05);
+    --card-border: var(--border-color);
+    --hover-transform: translateY(-8px) scale(1.005);
+    --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --gradient-text: linear-gradient(45deg, var(--accent-color), #ff6b6b);
+    --hover-glow: rgba(121, 40, 202, 0.15);
+    --transition-smooth: cubic-bezier(0.23, 1, 0.32, 1);
+    --card-glow: radial-gradient(circle at 50% 100%,
+        rgba(183, 0, 255, 0.1) 0%,
+        transparent 40%);
+
+    --bg-secondary-rgb: 25, 25, 25;
+    --accent-color-rgb: 183, 0, 255;
+    --logo-gradient: linear-gradient(45deg, #FF0080, #7928CA);
+}
+
+
+/* Aplicação do tema */
+[data-theme="light"] {
+    --bg-primary: var(--bg-primary-light);
+    /*--bg-secondary: var(--bg-secondary-light);*/
+    --text-primary: var(--text-primary-light);
+    --text-secondary: var(--text-secondary-light);
+    --accent-color: var(--accent-color-light);
+    --card-bg: var(--card-bg-light);
+    --border-color: var(--border-color-light);
+}
+
+[data-theme="dark"] {
+    --bg-primary: var(--bg-primary-dark);
+    /*--bg-secondary: var(--bg-secondary-dark);*/
+    --text-primary: var(--text-primary-dark);
+    --text-secondary: var(--text-secondary-dark);
+    --accent-color: var(--accent-color-dark);
+    --card-bg: var(--card-bg-dark);
+    --border-color: var(--border-color-dark);
+}
+
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+/* Botão de alternar tema no header */
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: var(--border-radius-sm);
+}
+
+*::-webkit-scrollbar-track {
+    background-color: var(--bg-secondary);
+    border-radius: var(--border-radius-sm);
+}

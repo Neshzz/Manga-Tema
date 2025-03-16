@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextSakura Admin</title>
+    <style>
+        /* Mantendo os estilos anteriores */
+        :root {
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --accent-primary: #9333ea;
+            --accent-hover: #7928d1;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --border-color: #333333;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --sidebar-width: 280px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--bg-secondary);
+            padding: var(--spacing-md);
+            border-right: 1px solid var(--border-color);
+        }
+
+        .main-content {
+            flex: 1;
+            padding: var(--spacing-lg);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .nav-list {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm);
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: var(--accent-primary);
+            color: var(--text-primary);
+        }
+
+        .content-card {
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            padding: var(--spacing-lg);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-secondary);
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: var(--spacing-sm);
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+        }
+
+        .button-group {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-lg);
+        }
+
+        .button {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .button-primary {
+            background-color: var(--accent-primary);
+            color: var(--text-primary);
+        }
+
+        .button-primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .button-secondary {
+            background-color: var(--bg-primary);
+            color: var(--text-secondary);
+        }
+
+        .button-secondary:hover {
+            background-color: var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .upload-zone {
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            padding: var(--spacing-lg);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-zone:hover {
+            border-color: var(--accent-primary);
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                position: sticky;
+                top: 0;
+                z-index: 10;
+            }
+            
+            .nav-list {
+                display: flex;
+                overflow-x: auto;
+            }
+            
+            .nav-item {
+                margin-bottom: 0;
+            }
+        }
+        .manga-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .manga-card {
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .manga-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .manga-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .manga-info {
+            padding: var(--spacing-sm);
+        }
+
+        .manga-title {
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .manga-author {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .genre-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+            margin-top: var(--spacing-xs);
+        }
+
+        .genre-tag {
+            background-color: var(--accent-primary);
+            color: var(--text-primary);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .user-list {
+            display: grid;
+            gap: var(--spacing-sm);
+        }
+
+        .user-card {
+            background-color: var(--bg-secondary);
+            padding: var(--spacing-sm);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .user-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: var(--accent-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .user-info {
+            flex: 1;
+        }
+
+        .user-name {
+            font-weight: 500;
+        }
+
+        .user-email {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .user-role {
+            background-color: var(--bg-primary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .genre-manager {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .genre-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+            margin-top: var(--spacing-xs);
+        }
+
+        .genre-item {
+            background-color: var(--bg-primary);
+            padding: 4px 12px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .genre-item button {
+            background: none;
+            border: none;
+            color: var(--danger-color);
+            cursor: pointer;
+            padding: 2px;
+        }
+
+        .search-bar {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: var(--spacing-sm);
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .layout {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                position: sticky;
+                top: 0;
+                z-index: 10;
+            }
+            
+            .nav-list {
+                display: flex;
+                overflow-x: auto;
+            }
+            
+            .nav-item {
+                margin-bottom: 0;
+            }
+
+            .manga-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="brand">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span>NextSakura</span>
+            </div>
+            <nav>
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-section="manage">
+                            📚 Gerenciar Obras
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-section="create">
+                            ✨ Nova Obra
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-section="upload">
+                            ⬆️ Upload
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-section="users">
+                            👥 Usuários
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <!-- Manage Manga Section -->
+            <section id="manage" class="content-section active">
+                <div class="content-card">
+                    <h1>Gerenciar Obras</h1>
+                    <div class="search-bar">
+                        <input type="text" class="search-input" placeholder="Buscar obras...">
+                    </div>
+                    <div class="manga-grid">
+                        <!-- Manga cards will be dynamically added here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Create Manga Section -->
+            <section id="create" class="content-section">
+                <div class="content-card">
+                    <h1>Nova Obra</h1>
+                    <form id="mangaForm" class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Título</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Descrição</label>
+                            <textarea class="form-textarea" rows="4" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Autor</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Gêneros</label>
+                            <div class="genre-manager">
+                                <input type="text" class="form-input" id="newGenre" placeholder="Novo gênero...">
+                                <button type="button" class="button button-primary" id="addGenre">
+                                    Adicionar
+                                </button>
+                            </div>
+                            <div class="genre-list" id="genreList">
+                                <!-- Genres will be dynamically added here -->
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Status</label>
+                            <select class="form-select" required>
+                                <option value="em-andamento">Em Andamento</option>
+                                <option value="completo">Completo</option>
+                                <option value="hiato">Hiato</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Capa</label>
+                            <div class="upload-zone" id="uploadZone">
+                                <p>Arraste uma imagem ou clique para selecionar</p>
+                                <input type="file" id="fileInput" accept="image/*" hidden>
+                            </div>
+                        </div>
+
+                        <div class="button-group">
+                            <button type="button" class="button button-secondary" id="draftButton">
+                                💾 Salvar Rascunho
+                            </button>
+                            <button type="submit" class="button button-primary" id="publishButton">
+                                📤 Publicar Mangá
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Upload Section -->
+            <section id="upload" class="content-section">
+                <div class="content-card">
+                    <h1>Upload de Capítulos</h1>
+                    <!-- Add upload functionality here -->
+                </div>
+            </section>
+
+            <!-- Users Section -->
+            <section id="users" class="content-section">
+                <div class="content-card">
+                    <h1>Usuários</h1>
+                    <div class="search-bar">
+                        <input type="text" class="search-input" placeholder="Buscar usuários...">
+                    </div>
+                    <div class="user-list">
+                        <!-- User cards will be dynamically added here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const section = link.dataset.section;
+                
+                // Update active link
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                
+                // Show active section
+                document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+                document.getElementById(section).classList.add('active');
+            });
+        });
+
+        // Genre Management
+        const genres = new Set(['Ação', 'Aventura', 'Comédia', 'Drama', 'Fantasia']);
+        const genreList = document.getElementById('genreList');
+        const newGenreInput = document.getElementById('newGenre');
+        const addGenreButton = document.getElementById('addGenre');
+
+        function updateGenreList() {
+            genreList.innerHTML = '';
+            genres.forEach(genre => {
+                const genreElement = document.createElement('div');
+                genreElement.className = 'genre-item';
+                genreElement.innerHTML = `
+                    ${genre}
+                    <button type="button" onclick="removeGenre('${genre}')">&times;</button>
+                `;
+                genreList.appendChild(genreElement);
+            });
+        }
+
+        function addGenre(genre) {
+            if (genre && !genres.has(genre)) {
+                genres.add(genre);
+                updateGenreList();
+            }
+        }
+
+        function removeGenre(genre) {
+            genres.delete(genre);
+            updateGenreList();
+        }
+
+        if (addGenreButton) {
+            addGenreButton.addEventListener('click', () => {
+                const genre = newGenreInput.value.trim();
+                if (genre) {
+                    addGenre(genre);
+                    newGenreInput.value = '';
+                }
+            });
+        }
+
+        // Initialize genre list
+        updateGenreList();
+
+        // Sample data for manga list
+        const mangaData = [
+            {
+                title: 'One Piece',
+                author: 'Eiichiro Oda',
+                cover: '/api/placeholder/250/300',
+                genres: ['Ação', 'Aventura', 'Fantasia']
+            },
+            {
+                title: 'Naruto',
+                author: 'Masashi Kishimoto',
+                cover: '/api/placeholder/250/300',
+                genres: ['Ação', 'Aventura']
+            }
+        ];
+
+        // Populate manga grid
+        const mangaGrid = document.querySelector('.manga-grid');
+        
+        function renderMangaGrid() {
+            mangaGrid.innerHTML = mangaData.map(manga => `
+                <div class="manga-card">
+                    <img src="${manga.cover}" alt="${manga.title}">
+                    <div class="manga-info">
+                        <h3 class="manga-title">${manga.title}</h3>
+                        <p class="manga-author">${manga.author}</p>
+                        <div class="genre-tags">
+                            ${manga.genres.map(genre => `
+                                <span class="genre-tag">${genre}</span>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Sample user data
+        const userData = [
+            {
+                name: 'João Silva',
+                email: 'joao@email.com',
+                role: 'Admin',
+                avatar: 'JS'
+            },
+            {
+                name: 'Maria Santos',
+                email: 'maria@email.com',
+                role: 'Editor',
+                avatar: 'MS'
+            },
+            {
+                name: 'Pedro Oliveira',
+                email: 'pedro@email.com',
+                role: 'Uploader',
+                avatar: 'PO'
+            }
+        ];
+
+        // Populate user list
+        const userList = document.querySelector('.user-list');
+        
+        function renderUserList() {
+            if (!userList) return;
+            
+            userList.innerHTML = userData.map(user => `
+                <div class="user-card">
+                    <div class="user-avatar">${user.avatar}</div>
+                    <div class="user-info">
+                        <div class="user-name">${user.name}</div>
+                        <div class="user-email">${user.email}</div>
+                    </div>
+                    <span class="user-role">${user.role}</span>
+                </div>
+            `).join('');
+        }
+
+        // Initialize manga grid and user list
+        renderMangaGrid();
+        renderUserList();
+
+        // Search functionality for manga
+        const mangaSearch = document.querySelector('#manage .search-input');
+        if (mangaSearch) {
+            mangaSearch.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredManga = mangaData.filter(manga => 
+                    manga.title.toLowerCase().includes(searchTerm) ||
+                    manga.author.toLowerCase().includes(searchTerm) ||
+                    manga.genres.some(genre => genre.toLowerCase().includes(searchTerm))
+                );
+                
+                mangaGrid.innerHTML = filteredManga.map(manga => `
+                    <div class="manga-card">
+                        <img src="${manga.cover}" alt="${manga.title}">
+                        <div class="manga-info">
+                            <h3 class="manga-title">${manga.title}</h3>
+                            <p class="manga-author">${manga.author}</p>
+                            <div class="genre-tags">
+                                ${manga.genres.map(genre => `
+                                    <span class="genre-tag">${genre}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            });
+        }
+
+        // Search functionality for users
+        const userSearch = document.querySelector('#users .search-input');
+        if (userSearch) {
+            userSearch.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredUsers = userData.filter(user =>
+                    user.name.toLowerCase().includes(searchTerm) ||
+                    user.email.toLowerCase().includes(searchTerm) ||
+                    user.role.toLowerCase().includes(searchTerm)
+                );
+
+                userList.innerHTML = filteredUsers.map(user => `
+                    <div class="user-card">
+                        <div class="user-avatar">${user.avatar}</div>
+                        <div class="user-info">
+                            <div class="user-name">${user.name}</div>
+                            <div class="user-email">${user.email}</div>
+                        </div>
+                        <span class="user-role">${user.role}</span>
+                    </div>
+                `).join('');
+            });
+        }
+
+        // File upload handling
+        const uploadZone = document.getElementById('uploadZone');
+        const fileInput = document.getElementById('fileInput');
+
+        if (uploadZone && fileInput) {
+            uploadZone.addEventListener('click', () => fileInput.click());
+            
+            uploadZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadZone.style.borderColor = 'var(--accent-primary)';
+            });
+            
+            uploadZone.addEventListener('dragleave', () => {
+                uploadZone.style.borderColor = 'var(--border-color)';
+            });
+            
+            uploadZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadZone.style.borderColor = 'var(--border-color)';
+                const file = e.dataTransfer.files[0];
+                if (file && file.type.startsWith('image/')) {
+                    handleFile(file);
+                }
+            });
+            
+            fileInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) handleFile(file);
+            });
+        }
+
+        function handleFile(file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                // Clear previous preview if exists
+                const existingImg = uploadZone.querySelector('img');
+                if (existingImg) {
+                    existingImg.remove();
+                }
+                
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.style.maxWidth = '100%';
+                img.style.marginTop = '1rem';
+                uploadZone.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Form submission handling
+        const mangaForm = document.getElementById('mangaForm');
+        const publishButton = document.getElementById('publishButton');
+        const draftButton = document.getElementById('draftButton');
+
+        if (mangaForm) {
+            mangaForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                publishButton.disabled = true;
+                publishButton.textContent = 'Publicando...';
+                
+                // Simulate API call
+                setTimeout(() => {
+                    publishButton.disabled = false;
+                    publishButton.textContent = '📤 Publicar Mangá';
+                    alert('Mangá publicado com sucesso!');
+                    mangaForm.reset();
+                    const img = uploadZone.querySelector('img');
+                    if (img) img.remove();
+                }, 1500);
+            });
+        }
+
+        if (draftButton) {
+            draftButton.addEventListener('click', () => {
+                draftButton.disabled = true;
+                draftButton.textContent = 'Salvando...';
+                
+                // Simulate API call
+                setTimeout(() => {
+                    draftButton.disabled = false;
+                    draftButton.textContent = '💾 Salvar Rascunho';
+                    alert('Rascunho salvo com sucesso!');
+                }, 1000);
+            });
+        }
+    </script>
+</body>
+</html>

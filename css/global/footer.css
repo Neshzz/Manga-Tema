@@ -1,0 +1,251 @@
+/* Footer Styles */
+.footer {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-top: 2px solid var(--accent-color);
+    width: 100%;
+}
+
+/* Footer Container */
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem; /* Reduzir o gap */
+    flex: 1;
+}
+
+.footer-left h3 {
+    color: var(--accent-color);
+    font-size: 1rem; /* Reduzir o tamanho da fonte */
+}
+
+/* Footer Sections */
+.footer-section {
+    flex: 1;
+}
+
+.footer-section h3 {
+    color: var(--accent-color);
+    font-size: 1rem; /* Reduzir o tamanho da fonte */
+    margin-bottom: 0.5rem; /* Reduzir a margem */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Reduzir o gap */
+}
+
+.footer-section h3 svg {
+    width: 1.5rem; /* Reduzir o tamanho do ícone */
+    height: 1.5rem;
+}
+
+/* Quick Links */
+.quick-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Reduzir o gap */
+}
+
+.quick-links a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Reduzir o gap */
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0.25rem 0; /* Reduzir o padding */
+    position: relative;
+}
+
+.quick-links a svg {
+    width: 1rem; /* Reduzir o tamanho do ícone */
+    height: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.quick-links a .link-tooltip {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--accent-color);
+    color: var(--bg-primary);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.8rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.quick-links a:hover {
+    color: var(--accent-color);
+}
+
+.quick-links a:hover svg {
+    transform: scale(1.1) rotate(5deg); /* Ajustar a animação */
+}
+
+.quick-links a:hover .link-tooltip {
+    opacity: 1;
+    visibility: visible;
+    top: 110%;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 0.75rem; /* Reduzir o gap */
+    margin-top: 0.5rem; /* Reduzir a margem */
+}
+
+.social-links a {
+    color: var(--text-primary);
+    font-size: 1rem; /* Reduzir o tamanho da fonte */
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+    transform: translateY(-2px); /* Ajustar a animação */
+}
+
+/* List Styles */
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.25rem; /* Reduzir a margem */
+}
+
+.footer-section ul li a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: var(--accent-color);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    margin-top: 1rem; /* Reduzir a margem */
+    padding-top: 0.5rem; /* Reduzir o padding */
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-bottom p {
+    color: var(--text-secondary);
+    font-size: 0.8rem; /* Reduzir o tamanho da fonte */
+}
+
+/* Responsive Grid Layout */
+@media screen and (min-width: 769px) {
+    .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-section {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+/* Common Section Styles */
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-section h3 {
+    color: var(--accent-color);
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+    .footer-section h3 {
+        justify-content: center;
+    }
+}
+
+/* Quick Links */
+.quick-links {
+    display: none; /* Hide quick links in footer */
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+    .social-links {
+        justify-content: center;
+    }
+}
+
+/* List Styles */
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+@media screen and (max-width: 768px) {
+    .footer-section ul {
+        align-items: center;
+    }
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-bottom p {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}

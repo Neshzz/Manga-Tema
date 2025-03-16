@@ -1,0 +1,16 @@
+Exibir as Informações no HTML
+Adicione elementos no seu HTML para exibir as novas informações:
+
+<div class="manga-info">
+    <h3 class="manga-title">Título do Mangá</h3>
+ <div class="manga-details">
+        <span class="manga-views">0 Visualizações</span>
+        <span class="manga-reactions">0 Reações</span>
+        <span class="manga-chapters">0 Capítulos</span>
+    </div>
+</div>
+
+4. Atualizar Reações em Tempo Real
+Para permitir que os usuários adicionem reações e atualizem o total de reações em tempo real, você pode adicionar um botão de reação que chama o endpoint update_manga_stats.php.
+
+<button id="reaction-button">Reagir</button>

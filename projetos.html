@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos - NextSakura</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/global/styles.css">
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+    <link rel="stylesheet" href="css/pages/projetos.css">
+    <script type="module" src="js/header/header.js"></script>
+</head>
+<body>
+    <header id="header"></header>
+    <main class="container">
+        <section class="filters-section">
+            <div class="search-bar">
+                <label for="search-input" class="visually-hidden">Buscar projeto</label>
+                <input type="text" id="search-input" placeholder="Buscar projeto...">
+            </div>
+            <div class="filter-options">
+                <label for="status-filter" class="visually-hidden">Filtrar por status</label>
+                <select id="status-filter">
+                    <option>Todos os Status</option>
+                    <option>Em Andamento</option>
+                    <option>Completo</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="projects-grid" id="projetos-grid"> <!-- Adicionado ID aqui -->
+            <!-- Exemplo de projetos -->
+            
+        </div>
+        </section>
+
+        <nav class="pagination">
+            <button id="prev-page" aria-label="Página anterior">Anterior</button>
+            <span id="current-page">1</span>
+            <button id="next-page" aria-label="Próxima página">Próximo</button>
+        </nav>
+    </main>
+
+    <div id="feedback-message" class="feedback-message" role="alert"></div>
+
+    <footer id="footer-placeholder"></footer>
+    <script src="js/header/footer.js"></script>
+    <script type="module" src="js/pages/projetos.js"></script>
+</body>
+</html>
