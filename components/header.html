@@ -1,0 +1,50 @@
+<!-- header.html -->
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<header class="site-header" role="banner">
+    <div class="header-container">
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
+            <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+
+        
+        
+        <div class="header-left">
+            <a href="/" class="logo" aria-label="NextSakura Home">NextSakura</a>
+        </div>
+        
+        <nav class="header-nav" id="main-nav" aria-label="Main navigation">
+            <a href="categorias.html">Categorias</a>
+            <a href="projetos.html">Projetos</a>
+            <a href="ranking.html">Ranking</a>
+        </nav>
+
+        <div class="header-right">
+            <button class="theme-toggle" aria-label="Alternar tema claro/escuro">
+                <i class="fas fa-sun" aria-hidden="true"></i>
+            </button>
+            <div class="search-box" role="search">
+                <label for="header-search" class="sr-only">Buscar no site</label>
+                <input 
+                    type="search" 
+                    id="header-search" 
+                    placeholder="Buscar..." 
+                    autocomplete="off"
+                    aria-label="Buscar no site">
+                <button class="search-btn" aria-label="Realizar busca">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="auth-buttons">
+                <button id="login-btn" class="btn-primary">Login</button>
+                <button id="register-btn" class="btn-secondary">Cadastro</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Adicionar elemento para skip navigation -->
+<a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+<script src="../js/header.js" type="module"></script>

@@ -1,0 +1,244 @@
+<!-- Modal Structure -->
+<div id="login-modal" class="modal" role="dialog" aria-labelledby="login-title">
+    <div class="modal-content">
+        <span id="close-modal" class="close" aria-label="Fechar modal">&times;</span>
+        <h2 id="login-title">Login</h2>
+        
+        <form id="login-form" novalidate>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required 
+                    autocomplete="email"
+                    aria-required="true"
+                    placeholder="Seu email"
+                >
+            </div>
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    required 
+                    autocomplete="current-password"
+                    aria-required="true"
+                    placeholder="Sua senha"
+                    minlength="8"
+                >
+            </div>
+            <button 
+                type="submit" 
+                class="submit-btn"
+                aria-label="Entrar"
+            >
+                Entrar
+            </button>
+        </form>
+
+        <div class="oauth-buttons">
+            <button 
+                id="google-login" 
+                class="oauth-btn google"
+                aria-label="Continuar com Google"
+            >
+                <i class="fab fa-google"></i> Continuar com Google
+            </button>
+            <button 
+                id="discord-login" 
+                class="oauth-btn discord"
+                aria-label="Continuar com Discord"
+            >
+                <i class="fab fa-discord"></i> Continuar com Discord
+            </button>
+        </div>
+
+        <div class="modal-footer">
+            <p>Não tem uma conta? <a href="#" class="toggle-modal" data-target="register">Registre-se</a></p>
+        </div>
+    </div>
+</div>
+
+<style>
+    :root {
+        --primary-color: #b700ff;
+        --secondary-color: #d020ff;
+        --background-dark: #000000;
+        --input-bg: #1a1a1a;
+        --text-light: #ffffff;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        line-height: 1.6;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+        animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .modal-content {
+        background-color: var(--background-dark);
+        margin: 10% auto;
+        padding: 30px;
+        border: 2px solid var(--primary-color);
+        border-radius: 15px;
+        width: 90%;
+        max-width: 400px;
+        box-shadow: 0 0 30px rgba(183, 0, 255, 0.3);
+        position: relative;
+        transform: scale(0.9);
+        animation: slideUp 0.4s forwards;
+    }
+
+    @keyframes slideUp {
+        to { 
+            transform: scale(1);
+        }
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        color: var(--text-light);
+        font-size: 30px;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    .close:hover {
+        color: var(--primary-color);
+    }
+
+    .modal h2 {
+        color: var(--text-light);
+        text-align: center;
+        margin-bottom: 25px;
+        text-shadow: 0 0 10px rgba(183, 0, 255, 0.5);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: var(--text-light);
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid var(--primary-color);
+        border-radius: 8px;
+        background-color: var(--input-bg);
+        color: var(--text-light);
+        transition: all 0.3s ease;
+    }
+
+    .form-group input:focus {
+        outline: none;
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 15px rgba(183, 0, 255, 0.3);
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 12px;
+        background-color: var(--primary-color);
+        color: var(--text-light);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+    }
+
+    .submit-btn:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(183, 0, 255, 0.4);
+    }
+
+    .oauth-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .oauth-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        color: var(--text-light);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .oauth-btn.google {
+        background-color: #db4437;
+    }
+
+    .oauth-btn.discord {
+        background-color: #5865f2;
+    }
+
+    .oauth-btn:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
+
+    .modal-footer {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .modal-footer a {
+        color: var(--text-light);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .modal-footer a:hover {
+        color: var(--primary-color);
+    }
+
+    @media (max-width: 480px) {
+        .modal-content {
+            margin: 5% auto;
+            padding: 20px;
+            width: 95%;
+        }
+    }
+</style>
